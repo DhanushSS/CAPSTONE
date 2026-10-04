@@ -1,0 +1,385 @@
+[
+  {
+    "id": "P01",
+    "short": "Adversarial drift",
+    "title": "Adversarial concept drift detection under poisoning attacks for robust data stream mining",
+    "authors": "L. Korycki and B. Krawczyk",
+    "venue": "Machine Learning 112, 4013-4048 (2023); first online 2022.",
+    "kind": "Direct problem evidence and existing solution",
+    "quote": "a malicious injection of false data that simulates a concept drift",
+    "location": "Open author manuscript, PDF page 1, Abstract. Also present in the journal abstract.",
+    "fact": "The authors study fake drift induced by poisoning and propose a robust drift detector. Adversarial drift is therefore an established research problem with existing defenses.",
+    "gap": "The question for VerdictTrace is whether synchronized CAN and V2X context can distinguish matched benign and malicious changes while identifying the affected layer. This is an extension to an established problem, not a claim that adversarial drift detection is new.",
+    "test": "Compare a standard drift detector, a robust drift baseline, and cross-layer attribution on matched benign and malicious scenarios.",
+    "limit": "This supports the problem, not a claim that VerdictTrace invents adversarial drift detection.",
+    "links": [
+      [
+        "Journal record",
+        "https://doi.org/10.1007/s10994-022-06177-w"
+      ],
+      [
+        "Open manuscript PDF",
+        "https://arxiv.org/pdf/2009.09497"
+      ],
+      [
+        "2024 correction",
+        "https://doi.org/10.1007/s10994-023-06459-x"
+      ]
+    ],
+    "extra": "Use the journal citation and consult its correction; manuscript page numbers differ from journal pagination.",
+    "context": "A model learning from a stream must adjust as the data changes, but the observations driving that adjustment can themselves be manipulated. This paper studies poisoning that creates an apparent drift and redirects adaptation toward misleading data. The authors propose a robust detector based on an augmented Restricted Boltzmann Machine and evaluate resistance to adversarial drift. [[An attacker can target the adaptation process, not just individual predictions.]] The paper therefore supplies both motivation and an existing defense that VerdictTrace must acknowledge.",
+    "gap_type": "Proposed application and evaluation gap",
+    "fill": "Compute CAN and V2X drift and attack scores independently. Use available authenticated maintenance context and bounded timing correlation to adjust confidence. Output a probable cause, affected layer and confidence, with an unknown outcome when evidence is insufficient. A missing cross-layer match must not suppress a strong single-layer attack alert.",
+    "validation": "Compare a standard drift detector, an adversarial-drift baseline and the proposed attribution method. Measure benign-change false alarms, attack recall, cause accuracy, detection delay and unknown outcomes.",
+    "boundary": "Observationally identical benign and malicious changes may remain indistinguishable; do not claim certainty about attacker intent."
+  },
+  {
+    "id": "P02",
+    "short": "CADE",
+    "title": "CADE: Detecting and Explaining Concept Drift Samples for Security Applications",
+    "authors": "L. Yang, W. Guo, Q. Hao, A. Ciptadi, A. Ahmadzadeh, X. Xing and G. Wang",
+    "venue": "USENIX Security 2021, pp. 2327-2344.",
+    "kind": "Essential prior work on explaining drift",
+    "quote": "provide explanations to reason the detected drift.",
+    "location": "Conference PDF page 2, printed page 2327, Abstract. Page 1 is a proceedings cover.",
+    "fact": "CADE detects drifting samples and explains them through features and distance. Its reported case studies include Android malware and network intrusion detection.",
+    "gap": "VerdictTrace asks whether a drift explanation can be connected to a controlled vehicle-event cause and independently verifiable records across CAN and V2X. A meaningful feature explanation and a defensible reconstruction of an event are different evaluation targets.",
+    "test": "Compare feature-based drift explanations with cause-labeled attribution and evidence-backed investigative reports.",
+    "limit": "Explaining drift is already prior art. Feature explanations also do not automatically establish an attacker's intent.",
+    "links": [
+      [
+        "Conference and code links",
+        "https://www.usenix.org/conference/usenixsecurity21/presentation/yang-limin"
+      ],
+      [
+        "Open paper PDF",
+        "https://www.usenix.org/system/files/sec21-yang-limin.pdf"
+      ]
+    ],
+    "context": "CADE monitors incoming samples for departures from the classes represented during training. It learns a lower-dimensional representation and a distance function using contrastive learning, then explains detected departures through relevant features. The paper evaluates Android malware classification and network intrusion detection, including testing with a security company's malware data. [[Explaining detected drift is already an established capability.]] Its explanations help analysts understand what changed, so VerdictTrace must demonstrate value beyond simply attaching a narrative to a drift alert.",
+    "gap_type": "Proposed evidence-grounding extension",
+    "fill": "Associate each alert with event identifiers, detector versions, relevant observations and verified evidence commitments. Give the investigation agent read-only access to validated records and witness receipts. Require every proposed cause to cite supporting evidence, show competing explanations and expose missing information for human review.",
+    "validation": "Compare feature-based explanations and fixed report templates with the agent's reports. Score cause-label agreement, valid citations, unsupported statements and timeline accuracy.",
+    "boundary": "A fluent explanation or a feature attribution does not by itself establish causation or malicious intent."
+  },
+  {
+    "id": "P03",
+    "short": "CND-IDS",
+    "title": "CND-IDS: Continual Novelty Detection for Intrusion Detection Systems",
+    "authors": "S. Fuhrman, O. Gungor and T. Rosing",
+    "venue": "62nd ACM/IEEE Design Automation Conference (DAC), 2025.",
+    "kind": "IEEE/ACM - continual detection baseline",
+    "quote": "continually changing data streams and a lack of attack labels.",
+    "location": "Open author version, PDF page 1, Abstract. See also Section III for the detection pipeline.",
+    "fact": "CND-IDS combines a continually updated feature extractor with PCA novelty detection. It evaluates detection across changing attack experiences.",
+    "gap": "A novelty signal identifies a departure, but the proposed fleet system also needs to assess whether that departure is consistent with a benign change or an attack. It must retain earlier attack sensitivity while reporting which communication layer supports the judgment.",
+    "test": "Measure cause-label accuracy, benign-change false alarms and attack retention, beyond novelty-detection accuracy.",
+    "limit": "The paper concerns general intrusion datasets. It is not a published CAN+V2X cause-attribution benchmark.",
+    "links": [
+      [
+        "IEEE record",
+        "https://ieeexplore.ieee.org/document/11132541/"
+      ],
+      [
+        "Open paper PDF",
+        "https://arxiv.org/pdf/2502.14094"
+      ]
+    ],
+    "context": "CND-IDS addresses intrusion detection when traffic evolves and labels for attacks are difficult to obtain. Its architecture continually updates a feature representation and uses PCA reconstruction to identify novelty. The reported experiments examine detection over changing network-security experiences, rather than assuming that a fixed training distribution remains adequate. [[Changing traffic and unavailable attack labels are joint design constraints.]] This makes the paper a relevant continual-detection baseline, while its reported results should not be treated as validated CAN+V2X attribution performance.",
+    "gap_type": "Proposed attribution task beyond novelty detection",
+    "fill": "Pair separate per-layer detectors with a cause-labelled scenario catalogue for evaluation. Record local verdicts before any fleet voting or AI narration. Gate model adaptation using a defined review policy and retained regression probes, so a suspected attack is not silently absorbed as the new normal.",
+    "validation": "Use chronological, scenario-disjoint splits. Measure benign-drift false alarms, new-attack recall, retained old-attack performance and cause-label accuracy after adaptation.",
+    "boundary": "Ground-truth scenario labels are for evaluation; they must not leak into the detector's test-time inputs."
+  },
+  {
+    "id": "P04",
+    "short": "Block4Forensic",
+    "title": "Block4Forensic: An Integrated Lightweight Blockchain Framework for Forensics Applications of Connected Vehicles",
+    "authors": "M. Cebe, E. Erdin, K. Akkaya, H. Aksu and S. Uluagac",
+    "venue": "IEEE Communications Magazine 56(10), pp. 50-57, 2018.",
+    "kind": "IEEE - explicit author-stated limitation",
+    "quote": "There is no mechanism for ensuring availability of critical forensic data on blockchain.",
+    "location": "Open author version, PDF page 7, Section V, third bullet. Read the whole bullet for context.",
+    "fact": "B4F stores hashes in a shared ledger and detailed evidence elsewhere. The authors explicitly distinguish integrity from availability of the underlying data.",
+    "gap": "Hash verification requires the underlying evidence to remain available. Vehicles may disconnect, lose storage or delete local records, leaving a valid commitment but no recoverable payload. The quoted limitation applies to B4F; it is not proof that all later forensic systems share it.",
+    "test": "Compare local hash chains with signed witness receipts plus encrypted evidence replication, across controlled outages and deletion.",
+    "limit": "Receipts alone cannot restore lost raw evidence. Retention and replication policies must be implemented and tested.",
+    "links": [
+      [
+        "Publisher DOI",
+        "https://doi.org/10.1109/MCOM.2018.1800137"
+      ],
+      [
+        "Open paper PDF",
+        "https://arxiv.org/pdf/1802.00561"
+      ]
+    ],
+    "context": "Block4Forensic proposes a permissioned blockchain framework for connected-vehicle investigations. To limit overhead, the shared ledger records hashes while detailed evidence remains in separate storage. In its future-research discussion, the authors explain that access to the original data still depends on individual storage and shared counterparts. [[A durable integrity commitment does not guarantee that the evidence itself remains retrievable.]] This is an explicit limitation of the described framework and a concrete starting point for GhostTrace's preservation experiments.",
+    "gap_type": "Explicit author-stated availability limitation",
+    "fill": "Maintain a local hash-chained evidence buffer, obtain signed external witness receipts and queue transfers across outages. Preserve selected encrypted evidence on an independent machine with explicit retention rules. On reconnection, reconcile commitments and payloads, reporting verified alteration separately from delayed, unavailable or unresolved evidence.",
+    "validation": "Compare hashes alone, hashes plus receipts, and receipts plus evidence replication. Measure recoverable records, alteration detection, storage overhead and false tampering claims during genuine outages.",
+    "boundary": "Receipts prove a commitment was witnessed; they cannot reconstruct deleted payloads without an available copy."
+  },
+  {
+    "id": "P05",
+    "short": "Language-agent IoV IDS",
+    "title": "Leveraging Blockchain-Empowered Lightweight Language Agent for Efficient Distributed DoS Detection in IoV Networks",
+    "authors": "M. Golam, J.-M. Lee and D.-S. Kim",
+    "venue": "ICTC 2025, IEEE proceedings, pp. 286-291.",
+    "kind": "Close competing architecture",
+    "quote": "Future work will explore federated learning to update models across distributed vehicles without sharing raw data.",
+    "location": "Conference PDF page 5, printed page 290, Section IV: Conclusion.",
+    "fact": "This work already combines a language-agent detector, multiple vehicle data sources and blockchain logging, and proposes future collaborative model updates.",
+    "gap": "The cited future direction concerns collaborative model updates. VerdictTrace instead proposes event-matched verdict exchange and an investigator downstream of the detector. Whether that choice improves communication cost, false-vote resistance or investigative reliability remains a research question.",
+    "test": "Measure false-vote resistance, below-quorum fallback and agent write-isolation under adversarial evidence text.",
+    "limit": "Adding an agent or secure logging is not enough for novelty. Verdict sharing still permits dishonest or mistaken votes.",
+    "links": [
+      [
+        "Open conference paper PDF",
+        "https://d2j16w31g89z0j.cloudfront.net/site/ictc2025/abs/E02-6.pdf"
+      ]
+    ],
+    "context": "This ICTC paper combines a lightweight language-agent detector with a two-layer blockchain design for Internet of Vehicles security. The agent processes heterogeneous vehicle information, including CAN, V2X and GPS data, while the logging architecture supports auditability. Its conclusion proposes future federated model updates without transferring raw data. [[Language agents, multiple vehicle data sources and secure logging already appear together in prior work.]] VerdictTrace therefore needs a specific, evaluated distinction in the agent's authority and the information exchanged between vehicles.",
+    "gap_type": "Author-proposed future work; different VerdictTrace design",
+    "fill": "Share signed verdicts, confidence values and event references rather than model parameters. Keep the canonical decision service separate from the AI agent. Restrict the agent to approved evidence-retrieval tools and analyst-facing reports; it must have no permission to rewrite verdicts, evidence commitments or vehicle controls.",
+    "validation": "Measure bytes exchanged, attack recall under dishonest votes, below-quorum fallback and agent write-isolation. Test misleading retrieved text as well as ordinary evidence.",
+    "boundary": "This is an alternative collaboration design, not an implementation of the paper's proposed federated training."
+  },
+  {
+    "id": "P06",
+    "short": "LAM distributed consensus",
+    "title": "Language Agent Model-Driven Distributed Consensus for Advanced IoV Threat Response Management",
+    "authors": "M. Golam, J.-M. Lee and D.-S. Kim",
+    "venue": "APCC 2025 / IEICE proceedings. DOI: 10.34385/proc.97.w4-3-6.",
+    "kind": "Closest overlap - discuss proactively",
+    "quote": "The LAM operates on edge devices to analyze heterogeneous data streams from CAN bus, V2X, and GPS sources.",
+    "location": "Publisher PDF page 1, Abstract. See Section II-A for the agent's detection role.",
+    "fact": "The architecture already describes CAN, V2X and GPS analysis, language-agent explanations, consensus and cryptographic logging. It also discusses disconnection handling.",
+    "gap": "The question is whether an isolated investigator and explicit evidence-status outcomes improve reliability when benign drift, attacks, disconnections and log corruption can resemble one another. We must demonstrate that distinction; the paper cannot be described as ignoring connectivity or cross-layer telemetry.",
+    "test": "Compare agent-grounded reports, evidence recovery and uncertain outcomes on a cause-labeled test suite.",
+    "limit": "Do not claim to be first to combine CAN, V2X, AI and logging, or that this paper ignores connectivity altogether.",
+    "links": [
+      [
+        "Publisher DOI",
+        "https://doi.org/10.34385/proc.97.w4-3-6"
+      ],
+      [
+        "Open publisher PDF",
+        "https://www.ieice.org/publications/proceedings/bin/pdf_link.php?fname=W4-3-6.pdf&iconf=APCC&lang=E&number=W4-3-6&vol=97&year=2025"
+      ]
+    ],
+    "context": "The APCC architecture places a language-agent model at the edge to analyse CAN, V2X and GPS information. It combines threat interpretation with distributed consensus and cryptographic logging, and it also discusses standby validators for disconnections. [[This paper substantially overlaps the proposed combination of vehicle telemetry, AI and trustworthy logging.]] It should be treated as a close comparator rather than evidence that such integration is absent. Its overlap makes precise attribution tests and enforced investigation boundaries central to VerdictTrace's positioning.",
+    "gap_type": "Proposed controlled-evaluation and authority-boundary extension",
+    "fill": "Make independent detector outputs and deterministic verification results authoritative. Give the agent only verified evidence packages and read-only retrieval tools. Require separate labels for observed drift, supported attack hypotheses, cryptographic inconsistency and unresolved evidence gaps. Let analysts approve any response outside the investigative report.",
+    "validation": "Run a cause-labelled test suite spanning drift, outages and tampering. Compare report factuality, unresolved-case handling, evidence recovery and agent permission enforcement against a documented comparator.",
+    "boundary": "Do not claim to be the first system combining CAN, V2X, language agents, consensus and logging."
+  },
+  {
+    "id": "P07",
+    "short": "Robust federated CAN IDS",
+    "title": "Robust Federated Learning for Anomaly Detection in Connected Autonomous Vehicle Networks Under Adversarial Attacks",
+    "authors": "A. Z. Md Jalal Uddin, A. Nayeem and T. Bhuiyan",
+    "venue": "Automation 7(3), article 80, 2026. DOI: 10.3390/automation7030080.",
+    "kind": "Threat-model evidence; different collaboration object",
+    "quote": "no single aggregation strategy is optimal across all threat models.",
+    "location": "Publisher HTML, Abstract, concluding sentences. Section 3 specifies model-parameter/update exchange.",
+    "fact": "The study compares robust model aggregation under several poisoning attacks and reports attack-dependent trade-offs.",
+    "gap": "Verdict exchange avoids accepting remote model updates, but it introduces false-report, replay and event-mismatch risks. The unresolved question is whether limited metadata exchange provides useful corroboration when some vehicles are dishonest or observe different evidence.",
+    "test": "Vary faulty participation, vote replay, delay, event mismatch and honest disagreement; report correctness and abstention separately.",
+    "limit": "Model-update aggregation and verdict voting solve different problems. Avoid direct accuracy comparisons without a matched task.",
+    "links": [
+      [
+        "Open publisher article",
+        "https://www.mdpi.com/2673-4052/7/3/80"
+      ],
+      [
+        "DOI",
+        "https://doi.org/10.3390/automation7030080"
+      ]
+    ],
+    "context": "This study evaluates federated anomaly detection for connected autonomous vehicles when participating clients can poison training. It compares aggregation strategies across adversarial settings, with collaboration based on model updates. Its reported findings show that the preferable aggregation rule depends on the attack conditions. [[Robustness must be assessed against a specified adversary and participation pattern.]] The result motivates careful evaluation of fleet collaboration, but does not establish the safety or performance of a separate system that exchanges local verdicts instead of model updates.",
+    "gap_type": "Proposed change in collaboration object and threat model",
+    "fill": "Sign each vote and bind it to an event, membership epoch and registered identity. Enforce one eligible vote per identity and event. For the four-client experiment, test at most one faulty client and require three matching eligible verdicts; otherwise retain a local-only result. Preserve disagreement explicitly.",
+    "validation": "Vary false votes, replay, delay, event mismatch and honest disagreement. Report communication cost, wrong corroborations, abstention and local-only detection performance separately.",
+    "boundary": "No model-weight exchange does not imply immunity to poisoned local data, false verdicts or privacy leakage."
+  },
+  {
+    "id": "P08",
+    "short": "DYNOTEARS",
+    "title": "DYNOTEARS: Structure Learning from Time-Series Data",
+    "authors": "R. Pamfil, N. Sriwattanaworachai, S. Desai, P. Pilgerstorfer, K. Georgatzis, P. Beaumont and B. Aragam",
+    "venue": "AISTATS 2020, PMLR 108, pp. 1595-1605.",
+    "kind": "Method assumption - essential ablation",
+    "quote": "the structure of the DBN is fixed through time and is identical for all time series in the data",
+    "location": "Official PDF page 8, Section 5: Discussion, right column, Assumptions.",
+    "fact": "DYNOTEARS learns temporal relationships. Its discussion explicitly identifies fixed-structure assumptions and further work on nonstationarity, confounding and undersampling.",
+    "gap": "A changing fleet may violate a fixed relationship structure, and timing errors can distort apparent dependencies. The project needs to establish whether graph-based context adds enough attribution value to justify its cost over a simpler timing-correlation baseline.",
+    "test": "Compare independent detectors, timing correlation and DYNOTEARS with chronological splits, lag sensitivity and edge resource measurements.",
+    "limit": "The paper does not establish superiority on CAN+V2X or causal proof of an attack. Faster performance must be measured.",
+    "links": [
+      [
+        "Proceedings record",
+        "https://proceedings.mlr.press/v108/pamfil20a.html"
+      ],
+      [
+        "Open paper PDF",
+        "https://proceedings.mlr.press/v108/pamfil20a/pamfil20a.pdf"
+      ]
+    ],
+    "context": "DYNOTEARS learns contemporaneous and time-lagged relationships in a dynamic Bayesian network through continuous optimization. Its discussion identifies assumptions about a common graph structure across time and across the analysed series, then proposes extensions involving changing structure and other difficult settings. The authors also discuss confounding and undersampling. [[A learned temporal graph is conditional on modelling and sampling assumptions.]] The method is a candidate for cross-layer context, but its original evaluation does not establish superior CAN+V2X drift attribution.",
+    "gap_type": "Explicit modelling assumption; proposed automotive evaluation",
+    "fill": "Evaluate independent detectors, bounded timing correlation and DYNOTEARS using identical scenario splits. Fit graphs only on permitted training windows; assess controlled refitting when assumptions change. Use graph evidence as qualified context rather than proof of an attack, and retain the simpler baseline if the extension gives no reliable gain.",
+    "validation": "Measure attribution improvement, false alarms, lag sensitivity, graph stability, CPU, RAM and latency on the intended deployment machines.",
+    "boundary": "Do not assume DYNOTEARS is faster, more accurate or a causal proof of malicious activity."
+  },
+  {
+    "id": "P09",
+    "short": "Targeted forgetting",
+    "title": "Targeted Forgetting and False Memory Formation in Continual Learners through Adversarial Backdoor Attacks",
+    "authors": "M. Umer, G. Dawson and R. Polikar",
+    "venue": "Open author manuscript, arXiv:2002.07111, 2020.",
+    "kind": "Threat motivation, not automotive validation",
+    "quote": "cause gradual and deliberate forgetting by introducing small amounts of misinformation to the model during training.",
+    "location": "Author manuscript, PDF page 1, Abstract. Section IV identifies the MNIST benchmarks.",
+    "fact": "The authors demonstrate adversarial effects on continual learning using EWC and permuted/split MNIST tasks.",
+    "gap": "A degraded detector, a missing alert and an altered log are different failures. The proposed system must distinguish observed model-performance loss from verified record alteration, without interpreting every forgotten attack or missing record as malicious activity.",
+    "test": "Include ordinary forgetting, controlled poisoning and unchanged-model controls; retain an unresolved-cause outcome.",
+    "limit": "A drop in detection performance is not proof of malicious forgetting. These experiments are not automotive results.",
+    "links": [
+      [
+        "Manuscript record",
+        "https://arxiv.org/abs/2002.07111"
+      ],
+      [
+        "Open paper PDF",
+        "https://arxiv.org/pdf/2002.07111"
+      ]
+    ],
+    "context": "The authors examine how a continual learner can be manipulated despite mechanisms intended to preserve earlier knowledge. Their experiments attack Elastic Weight Consolidation with backdoor samples and demonstrate targeted forgetting or false-memory behaviour on permuted and split MNIST tasks. [[Loss of previously learned behaviour can be deliberately induced as well as occur during ordinary learning.]] The paper motivates a controlled poisoning condition for VerdictTrace's evaluation, while its image-classification experiments cannot be treated as evidence of an automotive implementation.",
+    "gap_type": "Proposed forensic distinction and domain transfer",
+    "fill": "Preserve detector-version identifiers, earlier signed verdicts, approved update records and fixed regression-probe results. Compare current behaviour with retained history before the agent narrates a cause. Report model degradation, verified log inconsistency, connectivity gaps and unresolved causes separately; use controlled poisoning labels only as experimental ground truth.",
+    "validation": "Compare ordinary adaptation, deliberate poisoning and unchanged-model controls, with and without independent log alteration. Measure false tampering accusations and correct failure-category attribution.",
+    "boundary": "Performance loss alone cannot establish malicious forgetting, and model forgetting does not itself erase preserved logs."
+  },
+  {
+    "id": "P10",
+    "short": "ROAD dataset",
+    "title": "A comprehensive guide to CAN IDS data and introduction of the ROAD dataset",
+    "authors": "M. E. Verma et al.",
+    "venue": "PLOS ONE 19(1), e0296879, 2024.",
+    "kind": "Dataset and evaluation motivation",
+    "quote": "The scarcity of appropriate data has stymied comparability and reproducibility of results for researchers.",
+    "location": "Publisher PDF page 1, Abstract; Sections 3 and 4 describe the datasets and ROAD.",
+    "fact": "The paper documents CAN dataset limitations and contributes real vehicle CAN recordings with attacks of varying difficulty.",
+    "gap": "VerdictTrace needs labelled joint CAN+V2X scenarios and a separate audit-tampering/outage benchmark. This is a proposed addition to the CAN-focused evidence base, not a claim that ROAD is defective for its intended purpose or that a paired simulated dataset equals real fleet data.",
+    "test": "Publish scenario manifests, provenance, clock alignment, labels and leakage-resistant splits; retain public CAN benchmark comparisons.",
+    "limit": "Experimental synchronization must reflect shared scenarios. It does not make simulated V2X physically recorded fleet data.",
+    "links": [
+      [
+        "Open publisher article",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0296879"
+      ],
+      [
+        "Open paper PDF",
+        "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0296879&type=printable"
+      ],
+      [
+        "ROAD dataset",
+        "https://zenodo.org/records/10462796"
+      ]
+    ],
+    "context": "The ROAD paper reviews public CAN intrusion datasets and explains how differences in attack realism, available formats and documentation limit comparisons. It introduces real vehicle CAN recordings with ambient activity and attacks of varying stealth, including both real and simulated attack components. [[Dataset provenance and scenario realism affect what an IDS evaluation can establish.]] The paper provides a useful public CAN reference and motivates transparent documentation of any new experimental data rather than treating all generated traffic as equivalent to physical recordings.",
+    "gap_type": "Proposed synchronized benchmark extension",
+    "fill": "Use authentic CAN recordings or controlled bench traffic with a V2X simulator driven by the same documented scenario state. Record clock alignment, injection times, affected layers, cause labels and provenance. Separate training and testing by scenario or capture, and release generation scripts plus an independent audit-fault manifest.",
+    "validation": "Retain a public CAN benchmark comparison. Audit label correctness, synchronization and leakage; test held-out causes or scenarios and report simulated components explicitly.",
+    "boundary": "Aligning timestamps alone does not create meaningful cross-layer causality; the paired streams must represent a shared scenario."
+  },
+  {
+    "id": "P11",
+    "short": "Secure audit logs",
+    "title": "Secure Audit Logs to Support Computer Forensics",
+    "authors": "B. Schneier and J. Kelsey",
+    "venue": "ACM Transactions on Information and System Security, 1999.",
+    "kind": "Foundational prior art and guarantee boundary",
+    "quote": "this is a system to detect such manipulations after the fact.",
+    "location": "Author-hosted PDF page 1, Introduction, upper right column.",
+    "fact": "Secure logging on potentially compromised machines, with trusted interaction, predates this project. The guarantee concerns detectable alteration under assumptions.",
+    "gap": "In a disconnected fleet, evidence can be absent because it has not arrived, has been deleted or was never externally witnessed. VerdictTrace must identify what its commitments actually establish, preserve recoverability where possible and expose cases that cannot yet be resolved.",
+    "test": "Exercise edits, deletion, rollback, forged receipts and genuine gaps; separately measure recoverability and integrity detection.",
+    "limit": "Hash chaining is not new, and tamper-evidence is not prevention or proof that logged sensor content was true.",
+    "links": [
+      [
+        "Author publication page",
+        "https://www.schneier.com/academic/archives/1999/05/secure_audit_logs_to.html"
+      ],
+      [
+        "Open paper PDF",
+        "https://www.schneier.com/wp-content/uploads/2016/02/paper-auditlogs.pdf"
+      ]
+    ],
+    "context": "Schneier and Kelsey study audit records produced on a machine that may later be compromised. Their design uses cryptographic protection and interaction with a trusted machine to make manipulation of earlier records detectable under stated assumptions. They distinguish this objective from preventing every possible alteration. [[Tamper-evidence concerns detectable inconsistency with a trusted history.]] This is foundational prior work for GhostTrace: using a hash chain is not itself novel, and a valid log does not establish that the original sensor observation was truthful.",
+    "gap_type": "Proposed delayed-witnessing and investigation extension",
+    "fill": "Chain evidence records and obtain authenticated external commitments when peers are reachable. Buffer records during outages and reconcile them after reconnection. Verify signatures, sequence consistency and retained commitments before flagging alteration. Permit the agent to reconstruct timelines from those results, while keeping integrity verification outside its authority.",
+    "validation": "Inject edits, truncation, rollback, forged receipts and genuine outages. Measure detectable alterations, recoverable evidence, verification delay and false-positive tampering claims.",
+    "boundary": "Unwitnessed deletion can be ambiguous; key protection, retained commitments and witness trust must be explicit assumptions."
+  },
+  {
+    "id": "P12",
+    "short": "PBFT",
+    "title": "Practical Byzantine Fault Tolerance",
+    "authors": "M. Castro and B. Liskov",
+    "venue": "OSDI 1999, pp. 173-186.",
+    "kind": "Protocol foundation - not a novelty claim",
+    "quote": "For simplicity, we assume |R| = 3f+1 where f is the maximum number of replicas that may be faulty",
+    "location": "Official HTML, Section 4: The Algorithm, opening paragraphs; Section 4.2 describes commit quorums.",
+    "fact": "PBFT couples fault bounds with authenticated replicas, ordered operations, multiple protocol phases and view changes. A quorum number is only one part.",
+    "gap": "Vehicles can hold different observations and honest local verdicts, unlike deterministic replicas executing the same service operation. The research task is to specify which results can be corroborated and what happens when eligible participation or agreement is insufficient.",
+    "test": "Specify membership, event/epoch keys, non-equivocation, fault bounds and fallback; test partitions and contradictory votes.",
+    "limit": "Three matching votes from four clients is a proposed corroboration rule. It is not automatically PBFT or proof of semantic attack truth.",
+    "links": [
+      [
+        "Official conference record",
+        "https://www.usenix.org/conference/osdi-99/practical-byzantine-fault-tolerance"
+      ],
+      [
+        "Open paper, Section 4 HTML",
+        "https://static.usenix.org/publications/library/proceedings/osdi99/full_papers/castro/castro_html/node4.html"
+      ]
+    ],
+    "context": "PBFT maintains agreement among replicas of a deterministic service despite a bounded number of Byzantine faults. Its guarantees depend on a complete protocol, including authenticated messages, ordered requests, multiple voting phases and view changes. The familiar 3f+1 replica count is one component of that design. [[A quorum count alone is not the PBFT protocol or a guarantee of sensor truth.]] VerdictTrace must distinguish agreement about a submitted result from correctness of the underlying intrusion judgment.",
+    "gap_type": "Proposed event-corroboration specification; not a PBFT deficiency",
+    "fill": "Define registered membership, canonical event keys, epochs and honest non-equivocation rules. In the four-client, at-most-one-faulty experiment, require three matching signed eligible verdicts; otherwise keep local detection active and label the fleet result unavailable. If claiming replicated-state consensus, implement and evaluate a full appropriate protocol separately.",
+    "validation": "Test equivocation, duplicate identities, contradictory votes, partitions and changing participation. Analyse conflicting-certificate safety separately from detection accuracy and progress.",
+    "boundary": "Three-of-four corroboration is not automatically PBFT; unanimous mistaken observations can still produce an incorrect attack judgment."
+  },
+  {
+    "id": "P13",
+    "short": "PES evidence-integrity paper",
+    "title": "Validity of Forensic Evidence using Hash Function",
+    "authors": "Pradeep K C, Rajashree Soman and Prasad Honnavalli",
+    "venue": "IEEE ICCES 2020, pp. 823-826. DOI: 10.1109/ICCES48766.2020.9138061.",
+    "kind": "PES C-ISFCR / author-posted abstract only",
+    "quote": "They are used to verify whether the evidence has been subject to some unauthorized manipulation.",
+    "location": "Author-posted abstract on Rajashree Soman's Academia.edu profile, under this paper title; middle sentences. Full paper not reviewed.",
+    "links": [
+      [
+        "IEEE paper record",
+        "https://ieeexplore.ieee.org/document/9138061"
+      ],
+      [
+        "Author-posted abstract",
+        "https://jainuniversity.academia.edu/RajashreeSoman"
+      ],
+      [
+        "PES C-ISFCR listing",
+        "https://www.isfcr.pes.edu/research"
+      ]
+    ],
+    "context": "The author-posted abstract describes forensic acquisition using a copy of collected digital evidence so that investigation can proceed without changing the original. It explains the role of hash functions in checking whether the working evidence has been manipulated and introduces a mechanism combining hashing with other cryptographic concepts, including salting. [[The verified scope concerns checking evidence integrity during investigation.]] This summary is based on the author's abstract only; the complete method, experiments and stated limitations have not been inspected.",
+    "gap_type": "Tentative extension from abstract; full-text comparison pending",
+    "gap": "VerdictTrace's proposed question extends to delayed arrival, independent witnessing and recovery of evidence across vehicles. The available abstract does not establish whether the full paper addresses those issues, so they must not be presented as proven omissions of this work.",
+    "fill": "Use standard cryptographic integrity checks as a foundation, then add signed external receipts, evidence-retention policies and explicit unavailable-evidence outcomes. Link each analyst report to verified records. Treat this as the planned GhostTrace design; use P04 and P11 as the inspected sources supporting the current preservation argument.",
+    "validation": "Test integrity detection and evidence recovery separately. Complete the full-text comparison before claiming an advance over this particular paper.",
+    "boundary": "C-ISFCR is the PES research centre; IEEE ICCES 2020 is the publication venue. This entry is abstract-only."
+  }
+]

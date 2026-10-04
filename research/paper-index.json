@@ -1,0 +1,295 @@
+[
+  {
+    "id": "P01",
+    "short": "Adversarial drift",
+    "title": "Adversarial concept drift detection under poisoning attacks for robust data stream mining",
+    "authors": "L. Korycki and B. Krawczyk",
+    "venue": "Machine Learning 112, 4013-4048 (2023); first online 2022.",
+    "kind": "Direct problem evidence and existing solution",
+    "quote": "a malicious injection of false data that simulates a concept drift",
+    "location": "Open author manuscript, PDF page 1, Abstract. Also present in the journal abstract.",
+    "fact": "The authors study fake drift induced by poisoning and propose a robust drift detector. Adversarial drift is therefore an established research problem with existing defenses.",
+    "gap": "Can synchronized CAN and V2X context improve benign-versus-adversarial attribution while preserving uncertainty when causes remain indistinguishable?",
+    "test": "Compare a standard drift detector, a robust drift baseline, and cross-layer attribution on matched benign and malicious scenarios.",
+    "limit": "This supports the problem, not a claim that VerdictTrace invents adversarial drift detection.",
+    "links": [
+      [
+        "Journal record",
+        "https://doi.org/10.1007/s10994-022-06177-w"
+      ],
+      [
+        "Open manuscript PDF",
+        "https://arxiv.org/pdf/2009.09497"
+      ],
+      [
+        "2024 correction",
+        "https://doi.org/10.1007/s10994-023-06459-x"
+      ]
+    ],
+    "extra": "Use the journal citation and consult its correction; manuscript page numbers differ from journal pagination."
+  },
+  {
+    "id": "P02",
+    "short": "CADE",
+    "title": "CADE: Detecting and Explaining Concept Drift Samples for Security Applications",
+    "authors": "L. Yang, W. Guo, Q. Hao, A. Ciptadi, A. Ahmadzadeh, X. Xing and G. Wang",
+    "venue": "USENIX Security 2021, pp. 2327-2344.",
+    "kind": "Essential prior work on explaining drift",
+    "quote": "provide explanations to reason the detected drift.",
+    "location": "Conference PDF page 2, printed page 2327, Abstract. Page 1 is a proceedings cover.",
+    "fact": "CADE detects drifting samples and explains them through features and distance. Its reported case studies include Android malware and network intrusion detection.",
+    "gap": "Can an explanation be linked to a controlled vehicle-event cause and independently verifiable evidence across CAN and V2X?",
+    "test": "Compare feature-based drift explanations with cause-labeled attribution and evidence-backed investigative reports.",
+    "limit": "Explaining drift is already prior art. Feature explanations also do not automatically establish an attacker's intent.",
+    "links": [
+      [
+        "Conference and code links",
+        "https://www.usenix.org/conference/usenixsecurity21/presentation/yang-limin"
+      ],
+      [
+        "Open paper PDF",
+        "https://www.usenix.org/system/files/sec21-yang-limin.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "P03",
+    "short": "CND-IDS",
+    "title": "CND-IDS: Continual Novelty Detection for Intrusion Detection Systems",
+    "authors": "S. Fuhrman, O. Gungor and T. Rosing",
+    "venue": "62nd ACM/IEEE Design Automation Conference (DAC), 2025.",
+    "kind": "IEEE/ACM - continual detection baseline",
+    "quote": "continually changing data streams and a lack of attack labels.",
+    "location": "Open author version, PDF page 1, Abstract. See also Section III for the detection pipeline.",
+    "fact": "CND-IDS combines a continually updated feature extractor with PCA novelty detection. It evaluates detection across changing attack experiences.",
+    "gap": "Does a detected change arise from a benign operating change or a controlled attack, and which vehicle communication layer supplies the evidence?",
+    "test": "Measure cause-label accuracy, benign-change false alarms and attack retention, beyond novelty-detection accuracy.",
+    "limit": "The paper concerns general intrusion datasets. It is not a published CAN+V2X cause-attribution benchmark.",
+    "links": [
+      [
+        "IEEE record",
+        "https://ieeexplore.ieee.org/document/11132541/"
+      ],
+      [
+        "Open paper PDF",
+        "https://arxiv.org/pdf/2502.14094"
+      ]
+    ]
+  },
+  {
+    "id": "P04",
+    "short": "Block4Forensic",
+    "title": "Block4Forensic: An Integrated Lightweight Blockchain Framework for Forensics Applications of Connected Vehicles",
+    "authors": "M. Cebe, E. Erdin, K. Akkaya, H. Aksu and S. Uluagac",
+    "venue": "IEEE Communications Magazine 56(10), pp. 50-57, 2018.",
+    "kind": "IEEE - explicit author-stated limitation",
+    "quote": "There is no mechanism for ensuring availability of critical forensic data on blockchain.",
+    "location": "Open author version, PDF page 7, Section V, third bullet. Read the whole bullet for context.",
+    "fact": "B4F stores hashes in a shared ledger and detailed evidence elsewhere. The authors explicitly distinguish integrity from availability of the underlying data.",
+    "gap": "How much evidence remains recoverable and verifiable after a vehicle disconnects, deletes local records, or later reconnects?",
+    "test": "Compare local hash chains with signed witness receipts plus encrypted evidence replication, across controlled outages and deletion.",
+    "limit": "Receipts alone cannot restore lost raw evidence. Retention and replication policies must be implemented and tested.",
+    "links": [
+      [
+        "Publisher DOI",
+        "https://doi.org/10.1109/MCOM.2018.1800137"
+      ],
+      [
+        "Open paper PDF",
+        "https://arxiv.org/pdf/1802.00561"
+      ]
+    ]
+  },
+  {
+    "id": "P05",
+    "short": "Language-agent IoV IDS",
+    "title": "Leveraging Blockchain-Empowered Lightweight Language Agent for Efficient Distributed DoS Detection in IoV Networks",
+    "authors": "M. Golam, J.-M. Lee and D.-S. Kim",
+    "venue": "ICTC 2025, IEEE proceedings, pp. 286-291.",
+    "kind": "Close competing architecture",
+    "quote": "Future work will explore federated learning to update models across distributed vehicles without sharing raw data.",
+    "location": "Conference PDF page 5, printed page 290, Section IV: Conclusion.",
+    "fact": "This work already combines a language-agent detector, multiple vehicle data sources and blockchain logging, and proposes future collaborative model updates.",
+    "gap": "What changes when collaboration exchanges event-matched verdicts while the investigation agent cannot modify canonical decisions?",
+    "test": "Measure false-vote resistance, below-quorum fallback and agent write-isolation under adversarial evidence text.",
+    "limit": "Adding an agent or secure logging is not enough for novelty. Verdict sharing still permits dishonest or mistaken votes.",
+    "links": [
+      [
+        "Open conference paper PDF",
+        "https://d2j16w31g89z0j.cloudfront.net/site/ictc2025/abs/E02-6.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "P06",
+    "short": "LAM distributed consensus",
+    "title": "Language Agent Model-Driven Distributed Consensus for Advanced IoV Threat Response Management",
+    "authors": "M. Golam, J.-M. Lee and D.-S. Kim",
+    "venue": "APCC 2025 / IEICE proceedings. DOI: 10.34385/proc.97.w4-3-6.",
+    "kind": "Closest overlap - discuss proactively",
+    "quote": "The LAM operates on edge devices to analyze heterogeneous data streams from CAN bus, V2X, and GPS sources.",
+    "location": "Publisher PDF page 1, Abstract. See Section II-A for the agent's detection role.",
+    "fact": "The architecture already describes CAN, V2X and GPS analysis, language-agent explanations, consensus and cryptographic logging. It also discusses disconnection handling.",
+    "gap": "Can isolated downstream investigation and explicit evidence-gap outcomes improve forensic reliability under controlled drift, outages and log attacks?",
+    "test": "Compare agent-grounded reports, evidence recovery and uncertain outcomes on a cause-labeled test suite.",
+    "limit": "Do not claim to be first to combine CAN, V2X, AI and logging, or that this paper ignores connectivity altogether.",
+    "links": [
+      [
+        "Publisher DOI",
+        "https://doi.org/10.34385/proc.97.w4-3-6"
+      ],
+      [
+        "Open publisher PDF",
+        "https://www.ieice.org/publications/proceedings/bin/pdf_link.php?fname=W4-3-6.pdf&iconf=APCC&lang=E&number=W4-3-6&vol=97&year=2025"
+      ]
+    ]
+  },
+  {
+    "id": "P07",
+    "short": "Robust federated CAN IDS",
+    "title": "Robust Federated Learning for Anomaly Detection in Connected Autonomous Vehicle Networks Under Adversarial Attacks",
+    "authors": "A. Z. Md Jalal Uddin, A. Nayeem and T. Bhuiyan",
+    "venue": "Automation 7(3), article 80, 2026. DOI: 10.3390/automation7030080.",
+    "kind": "Threat-model evidence; different collaboration object",
+    "quote": "no single aggregation strategy is optimal across all threat models.",
+    "location": "Publisher HTML, Abstract, concluding sentences. Section 3 specifies model-parameter/update exchange.",
+    "fact": "The study compares robust model aggregation under several poisoning attacks and reports attack-dependent trade-offs.",
+    "gap": "Does sharing only signed event verdicts reduce communication and model-poisoning exposure, while remaining useful with malicious voters?",
+    "test": "Vary faulty participation, vote replay, delay, event mismatch and honest disagreement; report correctness and abstention separately.",
+    "limit": "Model-update aggregation and verdict voting solve different problems. Avoid direct accuracy comparisons without a matched task.",
+    "links": [
+      [
+        "Open publisher article",
+        "https://www.mdpi.com/2673-4052/7/3/80"
+      ],
+      [
+        "DOI",
+        "https://doi.org/10.3390/automation7030080"
+      ]
+    ]
+  },
+  {
+    "id": "P08",
+    "short": "DYNOTEARS",
+    "title": "DYNOTEARS: Structure Learning from Time-Series Data",
+    "authors": "R. Pamfil, N. Sriwattanaworachai, S. Desai, P. Pilgerstorfer, K. Georgatzis, P. Beaumont and B. Aragam",
+    "venue": "AISTATS 2020, PMLR 108, pp. 1595-1605.",
+    "kind": "Method assumption - essential ablation",
+    "quote": "the structure of the DBN is fixed through time and is identical for all time series in the data",
+    "location": "Official PDF page 8, Section 5: Discussion, right column, Assumptions.",
+    "fact": "DYNOTEARS learns temporal relationships. Its discussion explicitly identifies fixed-structure assumptions and further work on nonstationarity, confounding and undersampling.",
+    "gap": "Does graph-based context add attribution value when vehicle behavior changes, after accounting for clock alignment and model assumptions?",
+    "test": "Compare independent detectors, timing correlation and DYNOTEARS with chronological splits, lag sensitivity and edge resource measurements.",
+    "limit": "The paper does not establish superiority on CAN+V2X or causal proof of an attack. Faster performance must be measured.",
+    "links": [
+      [
+        "Proceedings record",
+        "https://proceedings.mlr.press/v108/pamfil20a.html"
+      ],
+      [
+        "Open paper PDF",
+        "https://proceedings.mlr.press/v108/pamfil20a/pamfil20a.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "P09",
+    "short": "Targeted forgetting",
+    "title": "Targeted Forgetting and False Memory Formation in Continual Learners through Adversarial Backdoor Attacks",
+    "authors": "M. Umer, G. Dawson and R. Polikar",
+    "venue": "Open author manuscript, arXiv:2002.07111, 2020.",
+    "kind": "Threat motivation, not automotive validation",
+    "quote": "cause gradual and deliberate forgetting by introducing small amounts of misinformation to the model during training.",
+    "location": "Author manuscript, PDF page 1, Abstract. Section IV identifies the MNIST benchmarks.",
+    "fact": "The authors demonstrate adversarial effects on continual learning using EWC and permuted/split MNIST tasks.",
+    "gap": "Can preserved detector histories and regression probes separate observed memory degradation from verified evidence corruption in a vehicle IDS?",
+    "test": "Include ordinary forgetting, controlled poisoning and unchanged-model controls; retain an unresolved-cause outcome.",
+    "limit": "A drop in detection performance is not proof of malicious forgetting. These experiments are not automotive results.",
+    "links": [
+      [
+        "Manuscript record",
+        "https://arxiv.org/abs/2002.07111"
+      ],
+      [
+        "Open paper PDF",
+        "https://arxiv.org/pdf/2002.07111"
+      ]
+    ]
+  },
+  {
+    "id": "P10",
+    "short": "ROAD dataset",
+    "title": "A comprehensive guide to CAN IDS data and introduction of the ROAD dataset",
+    "authors": "M. E. Verma et al.",
+    "venue": "PLOS ONE 19(1), e0296879, 2024.",
+    "kind": "Dataset and evaluation motivation",
+    "quote": "The scarcity of appropriate data has stymied comparability and reproducibility of results for researchers.",
+    "location": "Publisher PDF page 1, Abstract; Sections 3 and 4 describe the datasets and ROAD.",
+    "fact": "The paper documents CAN dataset limitations and contributes real vehicle CAN recordings with attacks of varying difficulty.",
+    "gap": "Can a documented experimental benchmark add synchronized CAN+V2X causes and a separate audit-tampering/outage test set?",
+    "test": "Publish scenario manifests, provenance, clock alignment, labels and leakage-resistant splits; retain public CAN benchmark comparisons.",
+    "limit": "Experimental synchronization must reflect shared scenarios. It does not make simulated V2X physically recorded fleet data.",
+    "links": [
+      [
+        "Open publisher article",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0296879"
+      ],
+      [
+        "Open paper PDF",
+        "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0296879&type=printable"
+      ],
+      [
+        "ROAD dataset",
+        "https://zenodo.org/records/10462796"
+      ]
+    ]
+  },
+  {
+    "id": "P11",
+    "short": "Secure audit logs",
+    "title": "Secure Audit Logs to Support Computer Forensics",
+    "authors": "B. Schneier and J. Kelsey",
+    "venue": "ACM Transactions on Information and System Security, 1999.",
+    "kind": "Foundational prior art and guarantee boundary",
+    "quote": "this is a system to detect such manipulations after the fact.",
+    "location": "Author-hosted PDF page 1, Introduction, upper right column.",
+    "fact": "Secure logging on potentially compromised machines, with trusted interaction, predates this project. The guarantee concerns detectable alteration under assumptions.",
+    "gap": "What evidence and uncertainty remain during delayed vehicle witnessing, and how can an investigator explain them without changing records?",
+    "test": "Exercise edits, deletion, rollback, forged receipts and genuine gaps; separately measure recoverability and integrity detection.",
+    "limit": "Hash chaining is not new, and tamper-evidence is not prevention or proof that logged sensor content was true.",
+    "links": [
+      [
+        "Author publication page",
+        "https://www.schneier.com/academic/archives/1999/05/secure_audit_logs_to.html"
+      ],
+      [
+        "Open paper PDF",
+        "https://www.schneier.com/wp-content/uploads/2016/02/paper-auditlogs.pdf"
+      ]
+    ]
+  },
+  {
+    "id": "P12",
+    "short": "PBFT",
+    "title": "Practical Byzantine Fault Tolerance",
+    "authors": "M. Castro and B. Liskov",
+    "venue": "OSDI 1999, pp. 173-186.",
+    "kind": "Protocol foundation - not a novelty claim",
+    "quote": "For simplicity, we assume |R| = 3f+1 where f is the maximum number of replicas that may be faulty",
+    "location": "Official HTML, Section 4: The Algorithm, opening paragraphs; Section 4.2 describes commit quorums.",
+    "fact": "PBFT couples fault bounds with authenticated replicas, ordered operations, multiple protocol phases and view changes. A quorum number is only one part.",
+    "gap": "What precise guarantee can event-matched vehicle verdict corroboration provide under sparse participation and differing observations?",
+    "test": "Specify membership, event/epoch keys, non-equivocation, fault bounds and fallback; test partitions and contradictory votes.",
+    "limit": "Three matching votes from four clients is a proposed corroboration rule. It is not automatically PBFT or proof of semantic attack truth.",
+    "links": [
+      [
+        "Official conference record",
+        "https://www.usenix.org/conference/osdi-99/practical-byzantine-fault-tolerance"
+      ],
+      [
+        "Open paper, Section 4 HTML",
+        "https://static.usenix.org/publications/library/proceedings/osdi99/full_papers/castro/castro_html/node4.html"
+      ]
+    ]
+  }
+]
