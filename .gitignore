@@ -14,3 +14,6 @@ tmp/
 node_modules/
 data/raw/
 data/private/
+
+# Editable Keynote presentation, not a cryptographic private key.
+!docs/presentation/review1-2026-10-12/VerdictTrace_Review1_Final.key

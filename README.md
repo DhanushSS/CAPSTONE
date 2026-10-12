@@ -12,7 +12,8 @@ VerdictTrace is a proposed detection, attribution and forensic-evidence system f
 
 | Material | Contents |
 |---|---|
-| [Review 1 presentation](docs/presentation/VerdictTrace_Phase1_Review1_Final.pptx) | 12 editable slides, diagrams and speaker notes |
+| [Latest Review 1 presentation](docs/presentation/review1-2026-10-12/README.md) | 23 slides, updated 12 October 2026: editable Keynote, PowerPoint and PDF |
+| [Earlier Review 1 presentation](docs/presentation/VerdictTrace_Phase1_Review1_Final.pptx) | Archived 12-slide proposal |
 | [Research evidence guide](docs/research/VerdictTrace_Research_Gap_Evidence.pdf) | 13 papers, contextual summaries, highlighted short excerpts, gaps, proposed methods and source links |
 | [Project proposal](docs/proposal.md) | Problem, scope, planned contributions and use cases |
 | [Architecture](docs/architecture.md) | Independent detectors, shared attribution, fleet corroboration, GhostTrace and bounded AI |
@@ -20,9 +21,9 @@ VerdictTrace is a proposed detection, attribution and forensic-evidence system f
 | [Evaluation plan](docs/evaluation-plan.md) | Baselines, scenario labels, ablations and success measures |
 | [Feasibility and roadmap](docs/feasibility-and-roadmap.md) | INR 20,000 planning ceiling, available hardware and staged milestones |
 | [Literature index](research/README.md) | Original-paper links and evidence status, including one later comparison paper |
-| [Presentation text and notes](docs/presentation-notes.md) | Searchable text snapshot of the deck |
+| [Earlier presentation text and notes](docs/presentation-notes.md) | Searchable snapshot of the archived 12-slide deck |
 
-The presentation records the earlier Review 1 proposal. The expanded research guide and integration clarification contain later literature analysis. The additional 2026 dual-domain IDS reference is documented separately; it is not included in the 13-paper PDF.
+The latest presentation is the 23-slide Review 1 revision linked above. Earlier presentation files and proposal documents remain available as historical material. The expanded research guide and integration clarification contain additional literature analysis. The 2026 dual-domain IDS reference appears in the latest presentation and is documented separately; it is not included in the 13-paper PDF.
 
 ## Proposed architecture
 
