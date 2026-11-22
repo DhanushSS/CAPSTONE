@@ -8,6 +8,21 @@ VerdictTrace is a proposed detection, attribution and forensic-evidence system f
 
 **Status: Phase 1 / ESA proposal.** This repository contains the presentation, literature evidence and design plan. The detector, fleet protocol, GhostTrace service, AI investigator, dashboard and datasets have not yet been implemented or experimentally validated. Document-generation code is included; it is not a security-system prototype.
 
+## Team and planned responsibilities
+
+| Team member | SRN | Phase 1 project plan |
+|---|---|---|
+| Dhanush Sai Suprapadha | PES2UG24CS154 | CAN and V2X datasets, independent baselines and synchronized scenarios with Eshwar |
+| Gurubelli Yekambar Eshwar Rao | PES2UG24CS173 | Joint dataset and baseline work with Dhanush, policy evaluation and quorum fallback |
+| Shreya R D | PES2UG24CS680 | GhostTrace evidence verification |
+| Amruta Karoshi | PES2UG24CS675 | Read-only AI investigator and analyst dashboard |
+
+All four members share responsibility for integration, held-out experiments, bench measurements and manuscript preparation.
+
+## Research library
+
+Browse [all 97 catalog records](research/phase1-esa/master-catalog.md#all-97-records) for linked titles, publication details, relevance and evidence status. The catalog contains 96 literature records and one standalone dataset. For a paper cited in the presentation or report, use the [ESA reference numbers](research/phase1-esa/README.md).
+
 ## Start here
 
 | Material | Contents |
@@ -52,18 +67,15 @@ flowchart TD
 
 Cross-layer correlation modifies confidence; it does not independently establish an attack or clear a strong single-layer alert. The AI investigator is downstream of canonical verdicts and evidence verification. It has no authority to control a vehicle or rewrite those records.
 
+## Planned evaluation
+
+The team plans to compare CAN-only, V2X-only and synchronized CAN/V2X observations from the same event. Cause-labelled scenarios will track attribution errors and cases where the available evidence supports no verdict. In the simulated message-delivery test, receiver logs will show which warnings arrived, including genuine warnings incorrectly withheld.
+
+GhostTrace experiments will vary evidence modification, connectivity loss and witness availability separately. Investigators will check whether available records match signed commitments and whether missing payloads can be recovered. The team will also assess whether AI summaries cite the records supporting each claim.
+
 ## Research positioning
 
 CAN and V2X integration already appears in published work. VerdictTrace does not claim to be the first combined system. Its proposed research contribution must be established through cause-labelled experiments, explicit insufficient-quorum behaviour, evidence preservation under outages and an evaluated, isolated investigation agent.
-
-## Team
-
-| SRN | Student |
-|---|---|
-| PES2UG24CS154 | Dhanush Sai Suprapadha |
-| PES2UG24CS173 | Gurubelli Yekambar Eshwar Rao |
-| PES2UG24CS680 | Shreya R D |
-| PES2UG24CS675 | Amruta Karoshi |
 
 ## Rebuild the research PDF
 
