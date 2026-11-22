@@ -1,5 +1,7 @@
 # Literature index
 
+The [Phase 1 ESA bibliography](phase1-esa/README.md) follows the final report’s reference numbers and links to both evidence dossiers and the broader catalog.
+
 The 13-paper [research evidence PDF](../docs/research/VerdictTrace_Research_Gap_Evidence.pdf) contains paragraph-length summaries, short exact excerpts, source locators, proposed gaps and evaluation plans. Summaries are not reproduced source paragraphs. P13 is based on an author-posted abstract; its full text has not been reviewed.
 
 ## Papers in the evidence guide

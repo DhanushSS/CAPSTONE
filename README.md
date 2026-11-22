@@ -6,12 +6,16 @@ PES University · CSE · Batch 51 · Guide: **Prof. Saravanaraj S**
 
 VerdictTrace is a proposed detection, attribution and forensic-evidence system for connected vehicle fleets. It investigates whether independent CAN and V2X analysis, event-matched fleet corroboration and witnessed evidence can improve the distinction between benign changes and attacks.
 
-**Status: Phase 1 / Review 1 proposal.** This repository contains the presentation, literature evidence and design plan. The detector, fleet protocol, GhostTrace service, AI investigator, dashboard and datasets have not yet been implemented or experimentally validated. Document-generation code is included; it is not a security-system prototype.
+**Status: Phase 1 / ESA proposal.** This repository contains the presentation, literature evidence and design plan. The detector, fleet protocol, GhostTrace service, AI investigator, dashboard and datasets have not yet been implemented or experimentally validated. Document-generation code is included; it is not a security-system prototype.
 
 ## Start here
 
 | Material | Contents |
 |---|---|
+| [Phase 1 ESA presentation](docs/phase1-esa/51_Phase1_ESA.pptx) | End-semester assessment |
+| [ESA report](docs/phase1-esa/51_Phase_1_ESA%20REPORT.pdf) | Project report and numbered references |
+| [Weekly report](docs/phase1-esa/51_Phase1_WeeklyReport_Signature.docx) | Phase 1 team record |
+| [ESA literature index](research/phase1-esa/README.md) | 16 core studies, five supporting references and the broader search catalog |
 | [Latest Review 1 presentation](docs/presentation/review1-2026-10-12/README.md) | 23 slides, updated 12 October 2026: editable Keynote, PowerPoint and PDF |
 | [Earlier Review 1 presentation](docs/presentation/VerdictTrace_Phase1_Review1_Final.pptx) | Archived 12-slide proposal |
 | [Research evidence guide](docs/research/VerdictTrace_Research_Gap_Evidence.pdf) | 13 papers, contextual summaries, highlighted short excerpts, gaps, proposed methods and source links |
@@ -23,7 +27,7 @@ VerdictTrace is a proposed detection, attribution and forensic-evidence system f
 | [Literature index](research/README.md) | Original-paper links and evidence status, including one later comparison paper |
 | [Earlier presentation text and notes](docs/presentation-notes.md) | Searchable snapshot of the archived 12-slide deck |
 
-The latest presentation is the 23-slide Review 1 revision linked above. Earlier presentation files and proposal documents remain available as historical material. The expanded research guide and integration clarification contain additional literature analysis. The 2026 dual-domain IDS reference appears in the latest presentation and is documented separately; it is not included in the 13-paper PDF.
+The ESA presentation follows the October Review 1 revision. Earlier presentation files and proposal documents remain available as historical material. The expanded research guide and integration clarification contain additional literature analysis. The 2026 dual-domain IDS reference appears in the latest presentation and is documented separately; it is not included in the 13-paper PDF.
 
 ## Proposed architecture
 
